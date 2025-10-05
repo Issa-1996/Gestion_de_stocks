@@ -1,0 +1,251 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f7fafc;
+}
+
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #1a202c 0%, #2d3748 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+
+  .sidebar-closed & {
+    width: 70px;
+  }
+}
+
+.sidebar-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: 18px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+  }
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 0;
+  overflow-y: auto;
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+
+    &.active {
+      background: rgba(102, 126, 234, 0.2);
+      color: white;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #667eea;
+      }
+    }
+
+    .nav-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-label {
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .toggle-btn {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+
+  .sidebar-closed & {
+    margin-left: 70px;
+  }
+}
+
+.header {
+  background: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  .header-left {
+    .menu-btn {
+      display: none;
+      padding: 8px;
+      background: transparent;
+      border: none;
+      color: #4a5568;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #f7fafc;
+      }
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+
+      .user-name {
+        font-weight: 600;
+        color: #1a202c;
+        font-size: 14px;
+      }
+
+      .user-role {
+        font-size: 12px;
+        color: #718096;
+      }
+    }
+  }
+
+  .logout-btn {
+    padding: 8px;
+    background: transparent;
+    border: none;
+    color: #718096;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #fee;
+      color: #ef4444;
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+
+    .sidebar-closed & {
+      transform: translateX(0);
+    }
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}

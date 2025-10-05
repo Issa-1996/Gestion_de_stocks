@@ -1,0 +1,127 @@
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1>Tableau de Bord</h1>
+    <p>Vue d'ensemble de votre inventaire</p>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Chargement des données...</p>
+    </div>
+  } @else {
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card primary">
+        <div class="stat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z"/>
+            <path d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <h3>{{ stats().totalProducts }}</h3>
+          <p>Produits Total</p>
+        </div>
+      </div>
+
+      <div class="stat-card warning">
+        <div class="stat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <h3>{{ stats().lowStock }}</h3>
+          <p>Stock Faible</p>
+        </div>
+      </div>
+
+      <div class="stat-card danger">
+        <div class="stat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <h3>{{ stats().outOfStock }}</h3>
+          <p>Rupture de Stock</p>
+        </div>
+      </div>
+
+      <div class="stat-card success">
+        <div class="stat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <h3>{{ stats().totalRevenue | number:'1.2-2' }} FCFA</h3>
+          <p>Revenu Total</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerts Section -->
+    @if (alerts().length > 0) {
+      <div class="alerts-section">
+        <h2>Alertes</h2>
+        <div class="alerts-list">
+          @for (alert of alerts(); track alert.id) {
+            <div class="alert-item" [class]="alert.type.toLowerCase()">
+              <div class="alert-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </div>
+              <div class="alert-content">
+                <p>{{ alert.message }}</p>
+                <span class="alert-time">{{ alert.createdAt | date:'short' }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Recent Transactions -->
+    <div class="transactions-section">
+      <h2>Transactions Récentes</h2>
+      <div class="transactions-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Référence</th>
+              <th>Type</th>
+              <th>Quantité</th>
+              <th>Montant</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (transaction of recentTransactions(); track transaction.id) {
+              <tr>
+                <td><strong>{{ transaction.reference }}</strong></td>
+                <td>
+                  <span class="badge" [class]="getTransactionTypeClass(transaction.type)">
+                    {{ getTransactionTypeLabel(transaction.type) }}
+                  </span>
+                </td>
+                <td>{{ transaction.quantity }}</td>
+                <td>{{ transaction.totalPrice | number:'1.2-2' }} FCFA</td>
+                <td>{{ transaction.createdAt | date:'short' }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+</div>
