@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Redirection...</title>
+    <script>
+        // Redirige toutes les routes 404 vers index.html avec le chemin original
+        sessionStorage.redirect = location.href;
+    </script>
+    <meta http-equiv="refresh" content="0;URL='index.html'">
+</head>
+<body>
+</body>
+</html>
