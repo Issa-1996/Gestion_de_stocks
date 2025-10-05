@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gestion-stocks": {
+    "Gestion_de_stocks": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gestion-stocks",
+            "outputPath": "dist/Gestion_de_stocks",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,8 +25,6 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "baseHref": "/gestion-stocks/",
-            "deployUrl": "/gestion-stocks/",
             "assets": [
               {
                 "glob": "**/*",
@@ -40,6 +38,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/Gestion_de_stocks/",
               "budgets": [
                 {
                   "type": "initial",
@@ -66,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gestion-stocks:build:production"
+              "buildTarget": "Gestion_de_stocks:build:production"
             },
             "development": {
-              "buildTarget": "gestion-stocks:build:development"
+              "buildTarget": "Gestion_de_stocks:build:development"
             }
           },
           "defaultConfiguration": "development"

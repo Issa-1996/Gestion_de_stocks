@@ -11,14 +11,14 @@
       }
     }
   },
-  "name": "gestion-stocks",
+  "name": "Gestion_de_stocks",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --configuration production",
-    "deploy": "ng build --configuration production --base-href /gestion-stocks/ && ngh --dir=dist/gestion-stocks/browser",
+    "deploy": "ng build --configuration production --base-href /Gestion_de_stocks/ && ngh --dir=dist/Gestion_de_stocks/browser",
     "test": "ng test --watch=false --browsers=ChromeHeadlessCI"
   },
   "private": true,

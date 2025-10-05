@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'gestion-stocks' title`, () => {
+  it(`should have the 'Gestion_de_stocks' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('gestion-stocks');
+    expect(app.title).toEqual('Gestion_de_stocks');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, gestion-stocks');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Gestion_de_stocks');
   });
 });
