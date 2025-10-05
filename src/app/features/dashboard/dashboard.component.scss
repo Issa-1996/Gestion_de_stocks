@@ -269,3 +269,123 @@
     transform: rotate(360deg);
   }
 }
+
+// Responsive Design
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 16px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 24px;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    padding: 20px;
+
+    .stat-content {
+      h3 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .alerts-section,
+  .transactions-section {
+    padding: 16px;
+    margin-bottom: 24px;
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+  }
+
+  .transactions-table {
+    table {
+      font-size: 13px;
+
+      thead th {
+        padding: 10px 12px;
+        font-size: 11px;
+      }
+
+      tbody td {
+        padding: 12px;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 12px;
+  }
+
+  .dashboard-header {
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  .stat-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .stat-content {
+      h3 {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .transactions-table {
+    table {
+      thead th,
+      tbody td {
+        padding: 8px;
+        font-size: 12px;
+
+        &:nth-child(3),
+        &:nth-child(4) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .alert-item {
+    padding: 12px;
+    font-size: 13px;
+  }
+}

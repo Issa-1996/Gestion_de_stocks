@@ -165,3 +165,106 @@
     transform: rotate(360deg);
   }
 }
+
+// Responsive Design
+@media (max-width: 768px) {
+  .login-container {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 32px 24px;
+    max-width: 100%;
+  }
+
+  .login-header {
+    margin-bottom: 24px;
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+
+      svg {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+  }
+
+  .login-form {
+    .form-group {
+      margin-bottom: 20px;
+
+      label {
+        font-size: 13px;
+      }
+
+      input {
+        padding: 10px 14px;
+        font-size: 14px;
+      }
+    }
+
+    .btn-primary {
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .demo-info {
+      margin-top: 20px;
+      padding: 12px;
+
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 12px;
+  }
+
+  .login-card {
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .login-header {
+    .logo {
+      width: 56px;
+      height: 56px;
+
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  .login-form {
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .demo-info {
+      p {
+        font-size: 11px;
+      }
+    }
+  }
+}
