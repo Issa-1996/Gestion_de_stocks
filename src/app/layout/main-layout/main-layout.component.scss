@@ -242,7 +242,7 @@
 
 @media (max-width: 768px) {
   .sidebar-overlay {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -262,17 +262,22 @@
     }
   }
 
+  // Sidebar cachée par défaut sur mobile
   .sidebar {
     transform: translateX(-100%);
     width: 260px;
-
-    &:not(.sidebar-closed) {
-      transform: translateX(0);
-    }
+    transition: transform 0.3s ease;
   }
 
-  .layout:not(.sidebar-closed) .sidebar {
-    transform: translateX(0);
+  // Sidebar visible quand sidebarOpen = true (sidebar-closed = false)
+  .layout:not(.sidebar-closed) {
+    .sidebar {
+      transform: translateX(0);
+    }
+    
+    .sidebar-overlay {
+      display: block;
+    }
   }
 
   .main-content {

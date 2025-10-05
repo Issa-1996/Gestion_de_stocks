@@ -1,8 +1,6 @@
 <div class="layout" [class.sidebar-closed]="!sidebarOpen()">
   <!-- Mobile Overlay -->
-  @if (!sidebarOpen()) {
-    <div class="sidebar-overlay" (click)="toggleSidebar()"></div>
-  }
+  <div class="sidebar-overlay" (click)="toggleSidebar()"></div>
   
   <!-- Sidebar -->
   <aside class="sidebar">

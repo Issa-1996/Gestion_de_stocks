@@ -11,7 +11,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrl: './main-layout.component.scss'
 })
 export class MainLayoutComponent {
-  sidebarOpen = signal(true);
+  sidebarOpen = signal(this.getInitialSidebarState());
   currentUser;
 
   menuItems = [
@@ -30,6 +30,11 @@ export class MainLayoutComponent {
     private router: Router
   ) {
     this.currentUser = this.authService.currentUser;
+  }
+
+  getInitialSidebarState(): boolean {
+    // Sidebar fermée sur mobile, ouverte sur desktop
+    return window.innerWidth > 768;
   }
 
   toggleSidebar(): void {
